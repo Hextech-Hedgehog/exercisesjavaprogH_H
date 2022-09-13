@@ -1,7 +1,6 @@
 package main;
 
 import enumm.Gender;
-import be.abis.courseadmin.model.*;
 import model.*;
 
 import java.text.ParseException;
