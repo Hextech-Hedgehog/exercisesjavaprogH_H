@@ -15,9 +15,19 @@ public class PalindromePhrase extends Palindrome {
     }
 
     @Override
+    public boolean isPalindrome() {
+        String sentence = this.getWord();
+        sentence = sentence.replaceAll("[^a-zA-Z ]", "").toLowerCase();
+        sentence = sentence.replaceAll("\\s+", "");
+        this.setWord(sentence);
+        return Palindrome.isPalindrome(this.getWord());
+    }
+
+    @Override
     public String toString() {
+        System.out.println("called");
         String str = "\"" + this.getWord() + "\"";
-        str += PalindromePhrase.isPalindrome(this.getWord()) ? " is a palindrome" : " isn't a palindrome";
+        str += this.isPalindrome() ? " is a palindrome" : " isn't a palindrome";
         return str;
     }
 

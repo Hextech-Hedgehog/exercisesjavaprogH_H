@@ -18,6 +18,10 @@ public class Palindrome {
         return IntStream.range(0, length / 2).noneMatch(i -> word.charAt(i) != word.charAt(length - 1 - i));
     }
 
+    public boolean isPalindrome() {
+        return Palindrome.isPalindrome(this.word);
+    }
+
     public static int countNumberOfPalindromes(String[] palindromes) {
         int counter = 0;
         for (String palindrome : palindromes) {
@@ -34,7 +38,11 @@ public class Palindrome {
     @Override
     public String toString() {
         String str = "\"" + this.getWord() + "\"";
-        str += Palindrome.isPalindrome(this.getWord()) ? " is a palindrome" : " isn't a palindrome";
+        str += this.isPalindrome(this.getWord()) ? " is a palindrome" : " isn't a palindrome";
         return str;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
     }
 }
