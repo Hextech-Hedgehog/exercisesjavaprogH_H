@@ -28,6 +28,7 @@ public class AbisEmployee extends Person {
     @Override
     public void printInfo() {
         super.printInfo();
+        this.role.printRoleInfo();
         System.out.println(" Has a montlhy income of " + this.salary + ". Home address: ");
         this.home.printInfo();
     }
@@ -60,9 +61,5 @@ public class AbisEmployee extends Person {
         }
 
         return result;
-    }
-
-    public void printRoleInfo() {
-        this.role.printRoleInfo();
     }
 }

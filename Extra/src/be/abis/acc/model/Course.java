@@ -1,6 +1,8 @@
 package be.abis.acc.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Course {
 
@@ -8,13 +10,19 @@ public class Course {
     private int duration;
     private double dailyPrice;
     private boolean requiresExperience;
+    private List<AbisEmployee> employees;
 
 
-    public Course(String name, int duration, double dailyPrice, boolean requiresExperience) {
+    public Course(String name, int duration, double dailyPrice, boolean requiresExperience, List<AbisEmployee> employees) {
         this.name = name;
         this.duration = duration;
         this.dailyPrice = dailyPrice;
         this.requiresExperience = requiresExperience;
+        this.employees = employees;
+    }
+
+    public Course() {
+
     }
 
     public String getName() {
