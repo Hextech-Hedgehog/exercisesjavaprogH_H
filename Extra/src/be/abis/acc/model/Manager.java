@@ -8,6 +8,6 @@ public class Manager implements Role {
 
     @Override
     public void printRoleInfo() {
-        System.out.println(super.getClass() + ": " + this.getClass().getSimpleName());
+        System.out.println(Role.class.getSimpleName() + ": " + this.getClass().getSimpleName());
     }
 }

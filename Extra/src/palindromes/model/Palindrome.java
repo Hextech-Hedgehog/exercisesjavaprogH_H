@@ -1,9 +1,14 @@
 package palindromes.model;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class Palindrome {
+
+    private String word;
+
+    public Palindrome(String word) {
+        this.word = word;
+    }
 
     public static boolean isPalindrome(String word) {
         int length = word.length();
@@ -22,4 +27,14 @@ public class Palindrome {
         return counter;
     }
 
+    public String getWord() {
+        return word;
+    }
+
+    @Override
+    public String toString() {
+        String str = "\"" + this.getWord() + "\"";
+        str += Palindrome.isPalindrome(this.getWord()) ? " is a palindrome" : " isn't a palindrome";
+        return str;
+    }
 }
