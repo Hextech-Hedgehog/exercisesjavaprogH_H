@@ -1,5 +1,9 @@
 package model;
 
+import exception.PriceException;
+import exception.PriceTooHighException;
+import exception.PriceTooLowException;
+
 public class Company {
 
     private String name;
@@ -28,5 +32,16 @@ public class Company {
 
     public String toString() {
         return "Company name: " + this.name;
+    }
+
+    public void requestPriceOfferForCompanySession(Course c, int numberOfParticipants) throws PriceException {
+        CompanySession cs = new CompanySession(c, "ABIS", this.name, numberOfParticipants);
+        double price = cs.calculatePrice();
+        if (price > 3000.0) {
+            throw new PriceTooHighException("Price too high exception. Price is " + price + ". Price musn't be greater than " + 3000.0);
+        } else if (price < 200) {
+            throw new PriceTooLowException("Price too low exception. Price is " + price + ". Price musn't be lower than " + 200.0);
+        }
+        System.out.println("number of participants: " + cs.getParticipants().size());
     }
 }

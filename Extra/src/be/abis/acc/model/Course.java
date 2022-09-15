@@ -1,7 +1,6 @@
 package be.abis.acc.model;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Course {
 
@@ -81,5 +80,10 @@ public class Course {
             System.out.print("not ");
         System.out.print("required. The total price is " + this.calculateTotalPrice());
         System.out.println(". " + this.labelPrice());
+    }
+
+    @Override
+    public String toString() {
+        return "Course name: " + this.name;
     }
 }

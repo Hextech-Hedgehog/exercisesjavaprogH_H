@@ -1,6 +1,6 @@
 package exception;
 
-public class PriceTooHighException extends Exception {
+public class PriceTooHighException extends PriceException {
 
     public PriceTooHighException(String errorMessage) {
         super(errorMessage);

@@ -1,6 +1,8 @@
-package be.abis.courseadmin.repository;
+package courseadmin.repository;
 
-import be.abis.courseadmin.model.Company;
+import exception.CompanyNotFoundException;
+import model.Company;
+
 import java.util.Arrays;
 
 public class MemoryArrayCompanyRepository implements CompanyRepository {
@@ -33,10 +35,13 @@ public class MemoryArrayCompanyRepository implements CompanyRepository {
     }
 
     @Override
-    public Company findCompany(String name) {
+    public Company findCompany(String name) throws CompanyNotFoundException {
         //long start, finish, timeElapsed;
         //start = System.nanoTime();
-        Company res = Arrays.stream(this.companies).filter(s -> s.getName().equals(name)).findFirst().get();
+        Company res = Arrays.stream(this.companies).filter(s -> s.getName().equals(name)).findFirst().orElse(null);
+        if (res == null) {
+            throw new CompanyNotFoundException("Company " + name + " not found.");
+        }
         /*finish = System.nanoTime();
         timeElapsed = finish - start;
         System.out.println(timeElapsed);*/

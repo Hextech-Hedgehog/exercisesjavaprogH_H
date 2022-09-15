@@ -2,6 +2,7 @@ package model;
 
 import exception.PriceTooHighException;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -21,6 +22,10 @@ public class CompanySession extends Session {
         this.participants = participants;
     }
 
+    public CompanySession(Course course, String orgCompany, String sponsorName, int amountParticipants) {
+        this(course, orgCompany, sponsorName, Arrays.asList(new Person[amountParticipants]));
+    }
+
     public void printInfo() {
         super.printInfo();
         System.out.print("This session is offered to you by " + this.sponsor.getName() + ". ");
@@ -32,7 +37,13 @@ public class CompanySession extends Session {
     public double calculatePrice() {
         double price = 0.0;
 
-        try {
+        int participantsCount = this.participants != null ? this.participants.size() : 1;
+        Date date = new Date();
+        long timeDiff = Math.abs(date.getTime() - this.getCourse().getStartTime().getTime());
+        long dayDiff = TimeUnit.DAYS.convert(timeDiff, TimeUnit.MILLISECONDS);
+        price = dayDiff * dailyPrice * participantsCount;
+
+        /*try {
             int participantsCount = this.participants != null ? this.participants.size() : 1;
             Date date = new Date();
             long timeDiff = Math.abs(date.getTime() - this.getCourse().getStartTime().getTime());
@@ -43,10 +54,16 @@ public class CompanySession extends Session {
             }
         } catch(PriceTooHighException e) {
             System.out.println(e.getMessage());
-        }
+        } finally {
+            System.out.println("finally");
+        }*/
 
 
         System.out.println("The price for the " + this.getClass().getSimpleName() + " is " + price);
         return price;
+    }
+
+    public List<Person> getParticipants() {
+        return participants;
     }
 }

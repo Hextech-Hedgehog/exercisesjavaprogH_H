@@ -27,7 +27,6 @@ public class Main {
         Arrays.stream(new Service[]{
                 session0, session1, new Consultancy(), new Service()
         }).forEach(Main::printServiceInfo);
-        //testSpeed();
         Course pythonCourse = new Course("Python", new Date(), "Udemy");
         Person emilia = new Person("Emilia", "Clarke", Gender.FEMALE);
         emilia.attendCourse(pythonCourse);
@@ -40,7 +39,7 @@ public class Main {
             ((Session)service).printInfo();
     }
 
-    public static void testSpeed() {
+    public static void findCompany() {
         MemoryArrayCompanyRepository macr = new MemoryArrayCompanyRepository(new String[]{"one", "nintendo", "sony", "playstation", "bing"});
         macr.findCompany("playstation");
     }

@@ -1,6 +1,11 @@
 package main;
 
+import courseadmin.repository.MemoryArrayCompanyRepository;
 import enumm.Gender;
+import exception.CompanyNotFoundException;
+import exception.PriceException;
+import exception.PriceTooHighException;
+import exception.PriceTooLowException;
 import model.*;
 
 import java.text.ParseException;
@@ -12,11 +17,12 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        String date_string = "26-09-2023";
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         Date date = new Date();
+        Date date2 = new Date();
         try {
-            date = formatter.parse(date_string);
+            date = formatter.parse("26-09-2023");
+            date2 = formatter.parse("22-09-2022");
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         }
@@ -38,6 +44,19 @@ public class Main {
         Arrays.stream(new Service[]{
                 session0, session1, new Service()
         }).forEach(Main::printServiceInfo);
+        try {
+            //session2.getOrganizer().requestPriceOfferForCompanySession(new Course("Fencing", date, "Olympic committee"), 10);
+            session2.getOrganizer().requestPriceOfferForCompanySession(new Course("Fencing", date2, "Olympic committee"), 2);
+        } catch(PriceException e) {
+          e.printStackTrace();
+        }
+
+        MemoryArrayCompanyRepository macr = new MemoryArrayCompanyRepository(new String[]{"one", "nintendo", "sony", "playstation", "bing"});
+        try {
+            macr.findCompany("xbox");
+        } catch(CompanyNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void printServiceInfo(Service service) {
