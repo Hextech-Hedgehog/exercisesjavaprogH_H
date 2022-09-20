@@ -1,7 +1,7 @@
 package model;
 
-import courseadmin.repository.CourseParticipant;
-import courseadmin.repository.Instructor;
+import repository.CourseParticipant;
+import repository.Instructor;
 import enumm.Gender;
 
 import java.util.ArrayList;
@@ -69,6 +69,19 @@ public class Person implements Instructor, CourseParticipant {
         for (String hobby: this.hobbies) {
             System.out.println(hobby);
         }
+    }
+
+    public int calculateAge() {
+        return this.age;
+    }
+
+    public void printInfo() {
+        System.out.print("Person: "+ this.firstName + " " + this.lastName);
+        System.out.print(" (" + this.age + " years old)");
+        if (this.company != null)
+            System.out.println(" works for " + this.company.getName() + " in " + this.company.getAddress().getTown());
+        else
+            System.out.println(" is not employed for the moment");
     }
 
     @Override

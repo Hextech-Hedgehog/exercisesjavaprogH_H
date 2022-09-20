@@ -9,25 +9,21 @@ public class Course {
     private Company location;
     private Person instructor;
 
-    public Course(String name, String companyName) {
-        this(name, new Date(), companyName);
+    public Course(String name, Company company) {
+        this(name, new Date(), company);
     }
 
-    public Course(String name, Date startTime, String companyName) {
+    public Course(String name, Date startTime, Company company) {
         System.out.println(name);
         this.startTime = startTime;
         this.name = name;
-        this.location = new Company(companyName);
+        this.location = company;
     }
 
-    public Course(String name, Date startTime, String companyName, Person instructor) {
-        this(name, startTime, companyName);
+    public Course(String name, Date startTime, Company company, Person instructor) {
+        this(name, startTime, company);
         if (instructor != null)
             this.instructor = instructor;
-    }
-
-    public Course(Course course) {
-        this(course.name, course.startTime, course.location.getName(), course.instructor);
     }
 
     public String getName() {

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CoffeeModule/CoffeeModule.iml" filepath="$PROJECT_DIR$/CoffeeModule/CoffeeModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/CourseAdmin/CourseAdmin.iml" filepath="$PROJECT_DIR$/CourseAdmin/CourseAdmin.iml" />
       <module fileurl="file://$PROJECT_DIR$/Extra/Extra.iml" filepath="$PROJECT_DIR$/Extra/Extra.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaProgramming.iml" filepath="$PROJECT_DIR$/JavaProgramming.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module4/Module4.iml" filepath="$PROJECT_DIR$/Module4/Module4.iml" />
       <module fileurl="file://$PROJECT_DIR$/Module5/Module5.iml" filepath="$PROJECT_DIR$/Module5/Module5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Module6/Module6.iml" filepath="$PROJECT_DIR$/Module6/Module6.iml" />
       <module fileurl="file://$PROJECT_DIR$/Syntax/Syntax.iml" filepath="$PROJECT_DIR$/Syntax/Syntax.iml" />
     </modules>
   </component>
