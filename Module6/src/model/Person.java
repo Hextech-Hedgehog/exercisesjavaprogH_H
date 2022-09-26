@@ -4,16 +4,15 @@ import repository.CourseParticipant;
 import repository.Instructor;
 import enumm.Gender;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Person implements Instructor, CourseParticipant {
 
     private String firstName;
     private String lastName;
     private Gender gender;
-    private List<String> hobbies = new ArrayList();
+    //private Set<String> hobbies = new HashSet<>();
+    private Set<String> hobbies = new TreeSet<>();
     private int age;
     private Company company;
     private Course course;
@@ -22,6 +21,7 @@ public class Person implements Instructor, CourseParticipant {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.age = age;
     }
 
     public Person(String firstName, String lastName, int age, Gender gender, Company company) {
@@ -31,6 +31,10 @@ public class Person implements Instructor, CourseParticipant {
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public Company getCompany() {
+        return company;
     }
 
     public void setFirstName(String firstName) {
@@ -61,7 +65,7 @@ public class Person implements Instructor, CourseParticipant {
         this.hobbies.addAll(Arrays.asList(hobbies));
     }
 
-    public List<String> getHobbies() {
+    public Set<String> getHobbies() {
         return hobbies;
     }
 
@@ -94,5 +98,9 @@ public class Person implements Instructor, CourseParticipant {
     public void teachCourse(Course course) {
         course.setInstructor(this);
         System.out.println(this.firstName + " is teaching " + this.course.getName() + " course.");
+    }
+
+    public boolean worksForAbis() {
+        return this.getCompany().getName().equalsIgnoreCase("ABIS");
     }
 }

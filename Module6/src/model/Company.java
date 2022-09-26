@@ -4,7 +4,7 @@ import exception.PriceException;
 import exception.PriceTooHighException;
 import exception.PriceTooLowException;
 
-public class Company {
+public class Company implements Comparable<Company> {
 
     private String name;
     private static int companyCount = 0;
@@ -14,6 +14,10 @@ public class Company {
     public Company(String name, Address address) {
         this.name = name;
         this.address = address;
+    }
+
+    public int getCompanyNumber() {
+        return companyNumber;
     }
 
     public String getName() {
@@ -45,5 +49,14 @@ public class Company {
             throw new PriceTooLowException("Price too low exception. Price is " + price + ". Price musn't be lower than " + 200.0);
         }
         System.out.println("number of participants: " + cs.getParticipants().size());
+    }
+
+    @Override
+    public int compareTo(Company c) {
+        if (this.getCompanyNumber() == c.getCompanyNumber())
+            return 0;
+        else if (this.getCompanyNumber() > c.getCompanyNumber())
+            return -1;
+        return 1;
     }
 }

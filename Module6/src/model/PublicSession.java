@@ -2,15 +2,18 @@ package model;
 
 import repository.CourseParticipant;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PublicSession extends Session {
 
-    List<CourseParticipant> enrolments;
+    public List<CourseParticipant> enrolments = new ArrayList<>();
 
     public PublicSession(Course course) {
-        super(course, "ABIS");
+        super(course, new Company("ABIS", new Address()));
     }
 
     @Override
@@ -37,6 +40,19 @@ public class PublicSession extends Session {
     }
 
     public void printParticipantList() {
-        //enrolments.forEach(Person::);
+        enrolments.forEach(CourseParticipant::printInfo);
+    }
+
+    public List<CourseParticipant> findAbisParticipants() {
+        return this.enrolments.stream().filter(p -> ((Person)p).worksForAbis()).toList();
+    }
+
+    public void removeAbisParticipant() {
+        Iterator it = this.enrolments.iterator();
+        while (it.hasNext()) {
+            if (((Person)it.next()).worksForAbis()) {
+                it.remove();
+            }
+        }
     }
 }

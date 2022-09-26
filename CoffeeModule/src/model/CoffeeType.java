@@ -40,8 +40,8 @@ public enum CoffeeType {
     public String toString() {
         String composition = this.name() + "\n";
         composition += "Composition: \n";
-        composition += "Coffee: " + this.getCoffeeVolume() + "\n";
-        composition += "Milk: " + this.getMilkVolume() + "\n";
+        composition += "\tCoffee: " + this.getCoffeeVolume() + "\n";
+        composition += "\tMilk: " + this.getMilkVolume() + "\n";
         return composition;
     }
 }

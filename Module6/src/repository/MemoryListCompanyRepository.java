@@ -3,14 +3,17 @@ package repository;
 import exception.CompanyNotFoundException;
 import model.Address;
 import model.Company;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MemoryListCompanyRepository implements CompanyRepository {
     private List<Company> companies;
 
     public MemoryListCompanyRepository(String[] companiesNames) {
-        this.companies = Arrays.stream(companiesNames).map(s -> new Company(s, new Address())).toList();
+        this.companies = Arrays.stream(companiesNames).map(s -> new Company(s, new Address())).collect(Collectors.toList());
     }
 
     @Override
@@ -44,6 +47,6 @@ public class MemoryListCompanyRepository implements CompanyRepository {
     }
 
     public List<Company> getCompanies() {
-        return companies;
+        return this.companies;
     }
 }

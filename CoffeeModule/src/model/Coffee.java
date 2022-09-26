@@ -35,8 +35,8 @@ public class Coffee {
     }
 
     public String toString() {
-        String extraSugar = this.sugar > 0 ? "With extra sugars: " + this.sugar : "";
-        String extraMilk = this.milk > 0 ? " milk: " + this.milk : "";
+        String extraSugar = this.sugar > 0 ? "\tWith extra sugars: " + this.sugar : "";
+        String extraMilk = this.milk > 0 ? "milk: " + this.milk : "";
         String extras = extraMilk.length() > 0 ? extraSugar + " and extra " + extraMilk : "";
         return this.getClass().getSimpleName() + " " + this.coffeeType.toString() + extras;
     }
