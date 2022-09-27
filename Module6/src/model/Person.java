@@ -6,7 +6,7 @@ import enumm.Gender;
 
 import java.util.*;
 
-public class Person implements Instructor, CourseParticipant {
+public class Person implements Instructor, CourseParticipant, Comparable<CourseParticipant> {
 
     private String firstName;
     private String lastName;
@@ -16,6 +16,8 @@ public class Person implements Instructor, CourseParticipant {
     private int age;
     private Company company;
     private Course course;
+    private static int personNumber = 0;
+    private int personId = personNumber++;
 
     public Person(String firstName, String lastName, int age, Gender gender) {
         this.firstName = firstName;
@@ -102,5 +104,15 @@ public class Person implements Instructor, CourseParticipant {
 
     public boolean worksForAbis() {
         return this.getCompany().getName().equalsIgnoreCase("ABIS");
+    }
+
+    @Override
+    public int compareTo(CourseParticipant cop) {
+        Person p = (Person)cop;
+        if (this.personId > p.personId) {
+            return -1;
+        } else if (this.personId < p.personId)
+            return 1;
+        return 0;
     }
 }

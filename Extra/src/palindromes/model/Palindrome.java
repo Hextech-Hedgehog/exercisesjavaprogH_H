@@ -1,5 +1,7 @@
 package palindromes.model;
 
+import palindromes.exceptions.NotAPalindromeException;
+
 import java.util.stream.IntStream;
 
 public class Palindrome {
@@ -12,10 +14,10 @@ public class Palindrome {
 
     public static boolean isPalindrome(String word) {
         int length = word.length();
-        if (length < 2)
-            return false;
-
-        return IntStream.range(0, length / 2).noneMatch(i -> word.charAt(i) != word.charAt(length - 1 - i));
+        boolean isPalindrome = length > 2 && IntStream.range(0, length / 2).noneMatch(i -> word.charAt(i) != word.charAt(length - 1 - i));
+        if (!isPalindrome)
+            throw new NotAPalindromeException(word + "isn't a palindrome");
+        return isPalindrome;
     }
 
     public boolean isPalindrome() {

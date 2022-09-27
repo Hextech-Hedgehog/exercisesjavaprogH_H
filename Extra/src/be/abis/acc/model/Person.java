@@ -1,5 +1,9 @@
 package be.abis.acc.model;
 
+import be.abis.acc.exceptions.AgeException;
+import be.abis.acc.exceptions.PersonShouldBeAdultException;
+import be.abis.acc.exceptions.PersonShouldNotBeRetiredException;
+
 public class Person {
 
     private String firstName;
@@ -61,7 +65,11 @@ public class Person {
         return "Person: " + this.personId + ". Named: " + this.firstName + ". Of age: " + this.age;
     }
 
-    public int calculateAge() {
+    public int calculateAge() throws AgeException {
+        if (this.age < 18)
+            throw new PersonShouldBeAdultException("This person is underage");
+        else if (this.age > 67)
+            throw new PersonShouldNotBeRetiredException("This person is retired");
         return this.age;
     }
 

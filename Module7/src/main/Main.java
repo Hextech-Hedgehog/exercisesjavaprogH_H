@@ -25,6 +25,10 @@ public class Main {
         Date date = new Date();
         Date date2 = new Date();
         LocalDate date3 = DateUtils.parse("23-11-2022");
+        LocalDate date4 = DateUtils.parse("1-1-2022");
+        LocalDate date5 = DateUtils.parse("incorrect String");
+        System.out.println(DateUtils.format(date4));
+        System.out.println(DateUtils.format(date5));
 
         try {
             date = formatter.parse("26-09-2023");
